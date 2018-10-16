@@ -19,7 +19,7 @@ By  leveraging multiple adversarial learning, our model can perform multi-domain
 - You can either download the default  datasets (from pix2pix and CycleGAN) or unzip your own dataset  into `datasets` directory.
 	* Download a default dataset (e.g.  apple2orange):
 	```
-		bash ./download_datasets.sh apple2orange
+	bash ./download_datasets.sh apple2orange
 	```
 	*  Please ensure that you have the following directory tree structure in your repository.
 	```
@@ -42,11 +42,11 @@ By  leveraging multiple adversarial learning, our model can perform multi-domain
 ### Testing
 - Check the folder name in `checkpoints` directory (e.g.  apple2orange).
 	```
-		├── checkpoints
-		│   └── base_apple2orange
-		│       └── 2018_10_16_14_49_55
-		│           └ ...
-		```
+	├── checkpoints
+	│   └── base_apple2orange
+	│       └── 2018_10_16_14_49_55
+	│           └ ...
+	```
 - Run
 	```
 	bash ./scripts/test_base.sh apple2orange 2018_10_16_14_49_55
