@@ -4,9 +4,16 @@ Pytorch implementation of our paper: ["SingleGAN: Image-to-Image Translation by 
 
 By  leveraging multiple adversarial learning, our model can perform multi-domain and multi-modal image translation with a single generator.
 
-<p align="center"><img src='images/base_model.jpg'  align="center" width='90%'
-	 align="center"><img src='images/extended_models.jpg'  align="center" width='90%'
+- Base model:
+<p align="center">
+<img src='images/base_model.jpg'  align="center" width='90%'>
 </p>
+
+- Extended models:
+<p align="center">
+<img src='images/extended_models.jpg'  align="center" width='90%'>
+</p>
+
 
 ## Dependencies
  - Python 3.x
