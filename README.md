@@ -38,6 +38,7 @@ By  leveraging multiple adversarial learning, our model can perform multi-domain
 	│       ├── testB
 	│        ...
 	```
+	*  Transient-Attributes dataset can be requested from [here](http://transattr.cs.brown.edu/).
 ### Training
 - Train a  base model (e.g.  apple2orange):
 	```
