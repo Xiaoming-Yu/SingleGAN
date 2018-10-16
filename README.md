@@ -18,7 +18,11 @@ By  leveraging multiple adversarial learning, our model can perform multi-domain
 ## Dependencies
  - Python 3.x
  - Pytorch 0.3 or later
- - visdom
+
+you can install all the dependencies  by
+```
+pip install -r requirements.txt
+```
  
 ## Getting Started
 

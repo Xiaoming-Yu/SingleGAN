@@ -1,0 +1,8 @@
+torch>=0.3.0
+torchvision>=0.2.0
+Pillow>=5.0.0
+numpy>=1.8
+dominate>=2.3.1
+visdom>=0.1.7
+tqdm>=3.0.0
+python-dateutil >= 1.0.0
