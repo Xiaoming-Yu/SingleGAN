@@ -6,6 +6,7 @@ FINE_SIZE=128
 INPUT_NC=3
 NITER=100
 NITER_DECAY=100
+IDENTITY=0 #If the background color is reversed during the training stage, please set this value to 10 to use identity loss
 
 # training
 GPU_ID=0
@@ -23,6 +24,7 @@ CUDA_VISIBLE_DEVICES=${GPU_ID} python ./train.py \
   --input_nc ${INPUT_NC} \
   --niter ${NITER} \
   --niter_decay ${NITER_DECAY} \
+  --lambda_ide ${IDENTITY} \
   --display_port 8097\
   --batchSize 1 \
   --ngf 64 \
