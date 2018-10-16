@@ -59,7 +59,7 @@ By  leveraging multiple adversarial learning, our model can perform multi-domain
 	```
 	bash ./scripts/test_base.sh apple2orange 2018_10_16_14_49_55
 	```
-- The testing results will be save in `checkpoints/base_apple2orange/2018_10_16_14_49_55/results` directory.
+- The testing results will be saved in `checkpoints/base_apple2orange/2018_10_16_14_49_55/results` directory.
 
 **See more training and testing details for extended models  in `scripts` directory.**
 
