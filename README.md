@@ -71,7 +71,7 @@ By  leveraging multiple adversarial learning, our model can perform multi-domain
 <p align="center"><img src='images/one2many.jpg'  align="center" width='90%'<p>
 
 #### Many-to-many model:
-<p align="center"><img src='images/many2many.jpg'  align="center" width='70%'<p>
+<p align="center"><img src='images/many2many.jpg'  align="center" width='60%'<p>
 
 #### Multimodal model:
 <p align="center"><img src='images/multimodal.jpg'  align="center" width='90%'<p>
