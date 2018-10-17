@@ -83,7 +83,7 @@ pip install -r requirements.txt
 <p align="center"><img src='images/multimodal.jpg'  align="center" width='90%'<p>
 
 
-**Please note that this repository contains only the unsupervised version of  SingleGAN, you can implement the supervised version by overloading the  data loader and replacing the the cycle consistency loss with reconstruction loss. See more details in our [paper](https://arxiv.org/abs/1810.04991).**
+**Please note that this repository contains only the unsupervised version of  SingleGAN, you can implement the supervised version by overloading the  data loader and replacing the cycle consistency loss with reconstruction loss. See more details in our [paper](https://arxiv.org/abs/1810.04991).**
 
 #### bibtex
 If this work is useful for your research, please consider citing :
