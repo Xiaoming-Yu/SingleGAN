@@ -67,6 +67,7 @@ pip install -r requirements.txt
 
 **See more training and testing details for extended models  in `scripts` directory.**
 
+
 ### Results
 
 #### Unsupervised cross-domain translation: 
@@ -81,8 +82,11 @@ pip install -r requirements.txt
 #### Unsupervised multimodal translation:
 <p align="center"><img src='images/multimodal.jpg'  align="center" width='90%'<p>
 
+
+**Please note that this repository contains only the unsupervised version of  SingleGAN, you can implement the supervised version by overloading the  data loader and replacing the the cycle consistency loss with reconstruction loss. See more details in our [paper](https://arxiv.org/abs/1810.04991).**
+
 #### bibtex
-If this work is useful for your research, please cite our [paper](https://arxiv.org/abs/1810.04991):
+If this work is useful for your research, please consider citing :
 ```
 @inproceedings{yu2018singlegan,    
 	title={SingleGAN: Image-to-Image Translation by a Single-Generator Network using Multiple Generative Adversarial Learning},    
