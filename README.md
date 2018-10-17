@@ -69,16 +69,16 @@ pip install -r requirements.txt
 
 ### Results
 
-#### Base model:
+#### Unsupervised cross-domain translation: 
 <p align="center"><img src='images/base.jpg'  align="center" width='100%'<p>
 
-#### One-to-many model:
+#### Unsupervised one-to-many translation:
 <p align="center"><img src='images/one2many.jpg'  align="center" width='90%'<p>
 
-#### Many-to-many model:
+#### Unsupervised many-to-many translation:
 <p align="center"><img src='images/many2many.jpg'  align="center" width='60%'<p>
 
-#### Multimodal model:
+#### Unsupervised multimodal translation:
 <p align="center"><img src='images/multimodal.jpg'  align="center" width='90%'<p>
 
 #### bibtex
