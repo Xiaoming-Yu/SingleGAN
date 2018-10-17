@@ -26,7 +26,7 @@ CUDA_VISIBLE_DEVICES=${GPU_ID} python ./train.py \
   --niter_decay ${NITER_DECAY} \
   --c_num ${LATENT_C_NUM} \
   --no_flip \
-  --display_port 8097\
+  --display_port 8097 \
   --batchSize 1 \
   --ngf 64 \
   --ndf 64 \
