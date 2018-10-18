@@ -1,7 +1,9 @@
 FILE=$1
 
-if [[ $FILE != "apple2orange" && $FILE != "summer2winter_yosemite" &&  $FILE != "horse2zebra" &&  $FILE != "photo2art" && $FILE != "edges2shoes" && $FILE != "edges2handbags" && $FILE != "monet2photo" && $FILE != "cezanne2photo" && $FILE != "vangogh2photo" ]]; then
-    echo "Available datasets are: apple2orange, summer2winter_yosemite, horse2zebra, photo2art, edge2shoes"
+if [[ $FILE != "apple2orange" && $FILE != "summer2winter_yosemite" &&  $FILE != "horse2zebra" &&  $FILE != "monet2photo" && $FILE != "cezanne2photo" && $FILE != "vangogh2photo" \
+    && $FILE != "photo2art" && $FILE != "edges2shoes" && $FILE != "edges2handbags" && $FILE != "night2day" && $FILE != "facades" ]]; then
+    echo "Available datasets are: apple2orange, summer2winter_yosemite, horse2zebra, monet2photo, cezanne2photo, vangogh2photo, \
+    photo2art, edge2shoes, edges2handbags, night2day, facades"
     exit 1
 fi
 
@@ -26,7 +28,7 @@ if [[ $FILE == "photo2art" ]]; then
         rm $ZIP_FILE
     done
 
-elif [[ $FILE == "edges2shoes" ||  $FILE == "edges2handbags" ]]; then
+elif [[ $FILE == "edges2shoes" ||  $FILE == "edges2handbags" || $FILE == "night2day" || $FILE == "facades" ]]; then
     URL=http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/$FILE.tar.gz
     TAR_FILE=./datasets/$FILE.tar.gz
     wget -N $URL -O $TAR_FILE

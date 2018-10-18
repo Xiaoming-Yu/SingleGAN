@@ -26,7 +26,7 @@ CUDA_VISIBLE_DEVICES=${GPU_ID} python ./test.py \
   --d_num ${DOMAIN_NUM} \
   --how_many ${HOW_MANY} \
   --which_epoch ${EPOCH} \
-  --no_flip \
+  --is_flip 0 \
   --batchSize 1 \
   --ngf 64 
   

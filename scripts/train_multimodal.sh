@@ -1,12 +1,41 @@
 MODE='multimodal'
 # dataset details
-CLASS=$1  #edges2shoes edges2handbags
-LOAD_SIZE=128
+CLASS=$1  #edges2shoes edges2handbags facades night2day
+LOAD_SIZE=143
 FINE_SIZE=128
 INPUT_NC=3
 LATENT_C_NUM=8
-NITER=30
-NITER_DECAY=30
+IS_FLIP=1
+
+case ${CLASS} in
+'facades')
+  NITER=200
+  NITER_DECAY=200
+  SAVE_EPOCH=25
+  ;;
+'edges2shoes')
+  NITER=30
+  NITER_DECAY=30
+  LOAD_SIZE=128
+  SAVE_EPOCH=5
+  IS_FLIP=0
+  ;;
+'edges2handbags')
+  NITER=15
+  NITER_DECAY=15
+  LOAD_SIZE=128
+  SAVE_EPOCH=5
+  IS_FLIP=0
+  ;;
+'night2day')
+  NITER=50
+  NITER_DECAY=50
+  SAVE_EPOCH=10
+  ;;
+*)
+  echo 'Unknown category'${CLASS}
+  ;;
+esac
 
 # training
 GPU_ID=0
@@ -25,7 +54,8 @@ CUDA_VISIBLE_DEVICES=${GPU_ID} python ./train.py \
   --niter ${NITER} \
   --niter_decay ${NITER_DECAY} \
   --c_num ${LATENT_C_NUM} \
-  --no_flip \
+  --save_epoch_freq ${SAVE_EPOCH} \
+  --is_flip ${IS_FLIP} \
   --display_port 8097 \
   --batchSize 1 \
   --ngf 64 \

@@ -22,7 +22,7 @@ def CreateDataLoader(opt):
     dataset = UpPairedDataset(opt.dataroot,
                             opt.loadSize,
                             opt.fineSize,
-                            not opt.no_flip,
+                            opt.is_flip>0,
                             opt.isTrain,
                             sourceD=sourceD,
                             targetD=targetD

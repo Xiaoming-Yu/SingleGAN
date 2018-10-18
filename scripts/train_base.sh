@@ -6,8 +6,10 @@ FINE_SIZE=128
 INPUT_NC=3
 NITER=100
 NITER_DECAY=100
-IDENTITY=0 #If the background color is reversed during the training stage, please set this value to 10 to use identity loss
-
+IDENTITY=0 #If the background color is reversed during the training stage, please set this value to 1 to use identity loss
+if [[ $1 == "apple2orange" ]]; then
+  IDENTITY=1
+fi
 # training
 GPU_ID=0
 DISPLAY_ID=$((GPU_ID*7+3))

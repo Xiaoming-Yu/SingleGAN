@@ -28,8 +28,7 @@ class BaseOptions():
         self.parser.add_argument('--c_num', type=int, default=0, help='#of latent dimension')
         self.parser.add_argument('--gpu', type=int, default=0, help='gpu id')
         self.parser.add_argument('--name', type=str, default='night2day', help='name of the experiment. It decides where to store samples and models')
-        self.parser.add_argument('--up_paired', action='store_true', help='if specified, use unpaired datasets')
-        self.parser.add_argument('--no_flip', action='store_true', help='if specified, do not flip the images for data argumentation')
+        self.parser.add_argument('--is_flip', type=int, default=1, help='if >0, flip the images for data argumentation')
         self.parser.add_argument('--nThreads', default=4, type=int, help='# sthreads for loading data')
         self.parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')
         self.parser.add_argument('--display_winsize', type=int, default=256,  help='display window size')
@@ -47,7 +46,7 @@ class BaseOptions():
         self.opt.isTrain = self.isTrain   # train or test
 
         args = vars(self.opt)
-
+    
         print('------------ Options -------------')
         for k, v in sorted(args.items()):
             print('%s: %s' % (str(k), str(v)))
