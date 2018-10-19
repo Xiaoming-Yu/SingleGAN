@@ -37,6 +37,7 @@ class BaseOptions():
         self.parser.add_argument('--c_gan_mode', type=str, default='lsgan', help='use dcgan or lsgan')
         self.parser.add_argument('--norm', type=str, default='instance', help='instance normalization or batch normalization')
         self.parser.add_argument('--init_type', type=str, default='xavier', help='network initialization [normal|xavier|kaiming|orthogonal]')
+        self.parser.add_argument('--time_dir', type=str, default='', help='the experiment time dir')
         self.initialized = True
 
     def parse(self):
@@ -53,21 +54,31 @@ class BaseOptions():
         print('-------------- End ----------------')
 
         if self.isTrain:
-            now = datetime.datetime.now(dateutil.tz.tzlocal())
-            timestamp = now.strftime('%Y_%m_%d_%H_%M_%S')
-            self.opt.expr_dir = os.path.join(self.opt.checkpoints_dir, self.opt.name, timestamp)
-            self.opt.model_dir = os.path.join(self.opt.expr_dir,'model')
-            util.mkdirs(self.opt.model_dir)
-            pkl_file = os.path.join(self.opt.expr_dir, 'opt.pkl')
-            pickle.dump(self.opt, open(pkl_file, 'wb'))
+            if not continue_train:
+                now = datetime.datetime.now(dateutil.tz.tzlocal())
+                timestamp = now.strftime('%Y_%m_%d_%H_%M_%S')
+                self.opt.expr_dir = os.path.join(self.opt.checkpoints_dir, self.opt.name, timestamp)
+                self.opt.model_dir = os.path.join(self.opt.expr_dir,'model')
+                util.mkdirs(self.opt.model_dir)
+                pkl_file = os.path.join(self.opt.expr_dir, 'opt.pkl')
+                pickle.dump(self.opt, open(pkl_file, 'wb'))
 
-            # save to the disk
-            file_name = os.path.join(self.opt.expr_dir, 'opt_train.txt')
-            with open(file_name, 'wt') as opt_file:
-                opt_file.write('------------ Options -------------\n')
-                for k, v in sorted(args.items()):
-                    opt_file.write('%s: %s\n' % (str(k), str(v)))
-                opt_file.write('-------------- End ----------------\n')
+                # save to the disk
+                file_name = os.path.join(self.opt.expr_dir, 'opt_train.txt')
+                with open(file_name, 'wt') as opt_file:
+                    opt_file.write('------------ Options -------------\n')
+                    for k, v in sorted(args.items()):
+                        opt_file.write('%s: %s\n' % (str(k), str(v)))
+                    opt_file.write('-------------- End ----------------\n')
+            else:
+                self.opt.expr_dir = os.path.join(self.opt.checkpoints_dir, self.opt.name, self.opt.time_dir)
+                self.opt.model_dir = os.path.join(self.opt.expr_dir,'model')
+                file_name = os.path.join(self.opt.expr_dir, 'opt_train_continue.txt')
+                with open(file_name, 'wt') as opt_file:
+                    opt_file.write('------------ Options -------------\n')
+                    for k, v in sorted(args.items()):
+                        opt_file.write('%s: %s\n' % (str(k), str(v)))
+                    opt_file.write('-------------- End ----------------\n')
         else:
             self.opt.expr_dir = os.path.join(self.opt.checkpoints_dir, self.opt.name, self.opt.time_dir)
             if self.opt.results_dir=='':

@@ -115,7 +115,7 @@ class Visualizer():
         print(message)
         # write losses to text file as well
         with open(self.log_path, "a") as log_file:
-            log_file.write(message)
+            log_file.write(message+'\n')
 
     # save image to the disk
     def save_images_old(self, webpage, visuals, image_path, short=False):
