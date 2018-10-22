@@ -54,7 +54,7 @@ class BaseOptions():
         print('-------------- End ----------------')
 
         if self.isTrain:
-            if not continue_train:
+            if not self.opt.continue_train:
                 now = datetime.datetime.now(dateutil.tz.tzlocal())
                 timestamp = now.strftime('%Y_%m_%d_%H_%M_%S')
                 self.opt.expr_dir = os.path.join(self.opt.checkpoints_dir, self.opt.name, timestamp)
