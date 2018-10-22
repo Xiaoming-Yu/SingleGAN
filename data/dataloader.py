@@ -19,7 +19,7 @@ def CreateDataLoader(opt):
     else:
         raise('mode:{} does not exist'.format(opt.mode))
     
-    dataset = UpPairedDataset(opt.dataroot,
+    dataset = UnPairedDataset(opt.dataroot,
                             opt.loadSize,
                             opt.fineSize,
                             opt.is_flip>0,
@@ -35,7 +35,7 @@ def CreateDataLoader(opt):
                              
     return data_loader
 
-class UpPairedDataset(Dataset):
+class UnPairedDataset(Dataset):
     def __init__(self, image_path, loadSize, fineSize, isFlip, isTrain, sourceD=[0,1], targetD=[1,0]):
         self.image_path = image_path
         self.isTrain = isTrain
