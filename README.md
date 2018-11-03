@@ -17,7 +17,7 @@ By  leveraging multiple adversarial learning, our model can perform multi-domain
 
 ## Dependencies
  - Python 3.x
- - Pytorch 0.3 or later
+ - Pytorch 0.4.1 or later
 
 you can install all the dependencies  by
 ```
@@ -65,7 +65,10 @@ pip install -r requirements.txt
 	```
 - The testing results will be saved in `checkpoints/base_apple2orange/2018_10_16_14_49_55/results` directory.
 
-**See more training and testing details for extended models  in `scripts` directory.**
+###  Pretrained models
+Coming soon...
+
+**In recent experiments, we found that  [spectral normaliation](https://arxiv.org/abs/1802.05957) (SN) can help stabilize the training stage. So we add SN in this implementation. You may need to update your pytorch to 0.4.1 to support SN  or use an [old version](https://github.com/Xiaoming-Yu/SingleGAN/tree/46e339464df4de526f1f35823bbe53a42689edea) without SN.**
 
 
 ### Results
@@ -80,7 +83,22 @@ pip install -r requirements.txt
 <p align="center"><img src='images/many2many.jpg'  align="center" width='60%'<p>
 
 #### Unsupervised multimodal translation:
-<p align="center"><img src='images/multimodal.jpg'  align="center" width='90%'<p>
+Cat ↔ Dog:
+<p align="center">
+<img src='images/cat.jpg'  width='18%' /><img src='images/cat2dog.gif'   width='18%' />
+<img src='images/dog.jpg'  width='18%'/><img src='images/dog2cat.gif'   width='18%'/>
+</p>
+Label ↔ Facade:
+<p align="center">
+<img src='images/label.jpg'  width='18%' /><img src='images/label2facade.gif'   width='18%' />
+<img src='images/facade.jpg'  width='18%'/><img src='images/facade2label.gif'   width='18%'/>
+</p>
+Edge ↔ Shoes:
+<p align="center">
+<img src='images/edge.jpg'  width='18%' /><img src='images/edge2shoe.gif'   width='18%' />
+<img src='images/shoe.jpg'  width='18%'/><img src='images/shoe2edge.gif'   width='18%'/>
+</p>
+
 
 
 **Please note that this repository contains only the unsupervised version of  SingleGAN, you can implement the supervised version by overloading the  data loader and replacing the cycle consistency loss with reconstruction loss. See more details in our [paper](https://arxiv.org/abs/1810.04991).**

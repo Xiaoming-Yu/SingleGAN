@@ -10,7 +10,7 @@ import math
 import functools
 from .cbin import CBINorm2d
 from .cbbn import CBBNorm2d
-
+from torch.nn.utils.spectral_norm import spectral_norm
 
 def get_norm_layer(layer_type='instance', num_con=2):
     if layer_type == 'batch':
@@ -65,8 +65,8 @@ class Conv2dBlock(nn.Module):
             self.pad = nn.ReplicationPad2d(padding)
         elif pad_type == 'zero':
             self.pad = nn.ZeroPad2d(padding)
-        self.conv = nn.Conv2d(in_planes, out_planes, kernel_size=kernel_size, stride=stride,
-                     padding=0, bias=bias)
+        self.conv = spectral_norm(nn.Conv2d(in_planes, out_planes, kernel_size=kernel_size, stride=stride,
+                     padding=0, bias=bias))
         if norm_layer is not None:
             self.norm = norm_layer(out_planes)
         else:
@@ -83,8 +83,8 @@ class Conv2dBlock(nn.Module):
 class TrConv2dBlock(nn.Module):
     def __init__(self, in_planes, out_planes, kernel_size=3, stride=1, padding=0, bias=True, dilation=1, norm_layer=None, nl_layer=None):
         super(TrConv2dBlock, self).__init__()
-        self.trConv = nn.ConvTranspose2d(in_planes, out_planes, kernel_size=kernel_size, stride=stride,
-                     padding=padding, bias=bias, dilation=dilation)
+        self.trConv = spectral_norm(nn.ConvTranspose2d(in_planes, out_planes, kernel_size=kernel_size, stride=stride,
+                     padding=padding, bias=bias, dilation=dilation))
         if norm_layer is not None:
             self.norm = norm_layer(out_planes)
         else:
@@ -173,13 +173,12 @@ class SingleGenerator(nn.Module):
 class D_NET(nn.Module):
     def __init__(self, input_nc=3, ndf=32, block_num=3,  norm_type='instance'):
         super(D_NET, self).__init__()
-        norm_layer, _ = get_norm_layer(layer_type=norm_type)
         nl_layer = get_nl_layer('lrelu')
         block = [Conv2dBlock(input_nc, ndf, kernel_size=4,stride=2,padding=1,bias=False,nl_layer=nl_layer)]
         dim_in=ndf
         for n in range(1, block_num):
             dim_out = min(dim_in*2, ndf*8)
-            block += [Conv2dBlock(dim_in, dim_out, kernel_size=4, stride=2, padding=1,bias=False,norm_layer=norm_layer,nl_layer=nl_layer)]
+            block += [spectral_norm(Conv2dBlock(dim_in, dim_out, kernel_size=4, stride=2, padding=1,bias=False,nl_layer=nl_layer))]
             dim_in = dim_out
         dim_out = min(dim_in*2, ndf*8)
         block += [Conv2dBlock(dim_in, 1, kernel_size=4, stride=1, padding=1,bias=True) ]
@@ -205,7 +204,7 @@ class D_NET_Multi(nn.Module):
 def meanpoolConv(inplanes, outplanes):
     sequence = []
     sequence += [nn.AvgPool2d(kernel_size=2, stride=2)]
-    sequence += [nn.Conv2d(inplanes, outplanes, kernel_size=1, stride=1, padding=0, bias=True)]
+    sequence += [spectral_norm(Conv2dBlock(inplanes, outplanes, kernel_size=1, stride=1, padding=0, bias=True))]
     return nn.Sequential(*sequence)
     
 def convMeanpool(inplanes, outplanes):
