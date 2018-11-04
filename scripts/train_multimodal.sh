@@ -14,22 +14,22 @@ case ${CLASS} in
   SAVE_EPOCH=25
   ;;
 'edges2shoes')
-  NITER=30
-  NITER_DECAY=30
-  LOAD_SIZE=128
-  SAVE_EPOCH=5
-  IS_FLIP=0
-  ;;
-'edges2handbags')
   NITER=15
   NITER_DECAY=15
   LOAD_SIZE=128
   SAVE_EPOCH=5
   IS_FLIP=0
   ;;
+'edges2handbags')
+  NITER=10
+  NITER_DECAY=10
+  LOAD_SIZE=128
+  SAVE_EPOCH=5
+  IS_FLIP=0
+  ;;
 'night2day')
-  NITER=50
-  NITER_DECAY=50
+  NITER=25
+  NITER_DECAY=25
   SAVE_EPOCH=10
   ;;
 *)
