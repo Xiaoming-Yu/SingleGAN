@@ -115,7 +115,7 @@ If this work is useful for your research, please consider citing :
  ```
 
 ### Acknowledgement
-The code used in this research is  is inspired by [BicycleGAN](https://github.com/junyanz/BicycleGAN).
+The code used in this research is inspired by [BicycleGAN](https://github.com/junyanz/BicycleGAN).
 
 ### Contact
 Feel free to reach me if there is any questions (Xiaoming-Yu@pku.edu.cn).
