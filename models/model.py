@@ -178,7 +178,7 @@ class D_NET(nn.Module):
         dim_in=ndf
         for n in range(1, block_num):
             dim_out = min(dim_in*2, ndf*8)
-            block += [spectral_norm(Conv2dBlock(dim_in, dim_out, kernel_size=4, stride=2, padding=1,bias=False,nl_layer=nl_layer))]
+            block += [Conv2dBlock(dim_in, dim_out, kernel_size=4, stride=2, padding=1,bias=False,nl_layer=nl_layer)]
             dim_in = dim_out
         dim_out = min(dim_in*2, ndf*8)
         block += [Conv2dBlock(dim_in, 1, kernel_size=4, stride=1, padding=1,bias=True) ]
@@ -204,7 +204,7 @@ class D_NET_Multi(nn.Module):
 def meanpoolConv(inplanes, outplanes):
     sequence = []
     sequence += [nn.AvgPool2d(kernel_size=2, stride=2)]
-    sequence += [spectral_norm(Conv2dBlock(inplanes, outplanes, kernel_size=1, stride=1, padding=0, bias=True))]
+    sequence += [Conv2dBlock(inplanes, outplanes, kernel_size=1, stride=1, padding=0, bias=True)]
     return nn.Sequential(*sequence)
     
 def convMeanpool(inplanes, outplanes):

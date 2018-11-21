@@ -40,7 +40,7 @@ class _CBINorm(_BatchNorm):
                 for key in running_stats_keys:
                     state_dict.pop(key)
 
-        super(_InstanceNorm, self)._load_from_state_dict(
+        super(_CBINorm, self)._load_from_state_dict(
             state_dict, prefix, metadata, strict,
             missing_keys, unexpected_keys, error_msgs)
             
