@@ -17,7 +17,7 @@ By  leveraging multiple adversarial learning, our model can perform multi-domain
 
 ## Dependencies
  - Python 3.x
- - Pytorch 0.4.1 or later
+ - Pytorch 1.1.0 or later
 
 you can install all the dependencies  by
 ```
@@ -65,8 +65,6 @@ pip install -r requirements.txt
 	```
 - The testing results will be saved in `checkpoints/base_apple2orange/2018_10_16_14_49_55/results` directory.
 
-###  Pretrained models
-Coming soon...
 
 **In recent experiments, we found that  [spectral normaliation](https://arxiv.org/abs/1802.05957) (SN) can help stabilize the training stage. So we add SN in this implementation. You may need to update your pytorch to 0.4.1 to support SN  or use an [old version](https://github.com/Xiaoming-Yu/SingleGAN/tree/46e339464df4de526f1f35823bbe53a42689edea) without SN.**
 

@@ -146,14 +146,14 @@ class SingleGAN():
     def get_current_errors(self):
         dict = []
         for i in range(self.opt.d_num):
-            dict += [('D_{}'.format(i), self.errDs[i].data[0])]
-            dict += [('G_{}'.format(i), self.errGs[i].data[0])]
-        dict += [('errCyc', self.errCyc.data[0])]
+            dict += [('D_{}'.format(i), self.errDs[i].data.item())]
+            dict += [('G_{}'.format(i), self.errGs[i].data.item())]
+        dict += [('errCyc', self.errCyc.data.item())]
         if self.opt.lambda_ide > 0:
-            dict += [('errIde', self.errIde.data[0])]
+            dict += [('errIde', self.errIde.data.item())]
         if self.E is not None:
-            dict += [('errKl', self.errKL.data[0])]
-            dict += [('errCode', self.errCode.data[0])]
+            dict += [('errKl', self.errKL.data.item())]
+            dict += [('errCode', self.errCode.data.item())]
         return OrderedDict(dict)
         
     def get_current_visuals(self):
